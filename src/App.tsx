@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './views/Home'
 import React from 'react'
+import DefaultLayout from './style/DefaultLayout'
+import styled from 'styled-components'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <Router>
-      <Route path="*" element={<Home />} />
+      <Routes>
+        <Route path="*" element={<DefaultLayout />}>
+          <Route index element={<Navigate to="/home" />} />
+          <Route path="home" element={<Home />} />
+        </Route>
+      </Routes>
     </Router>
   )
 }
