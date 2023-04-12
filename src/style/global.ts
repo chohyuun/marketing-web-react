@@ -1,29 +1,9 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+import './fonts.scss'
+import './variable.scss'
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+export const GlobalStyle = `
 body {
+  font-family: Pretendard, sans-serif;
   margin: 0;
   display: flex;
   min-width: 320px;
@@ -34,6 +14,18 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+a {
+  font-weight: 500;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #888888;
+  cursor: pointer;
+}
+
 
 button {
   border-radius: 8px;
@@ -66,3 +58,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+`

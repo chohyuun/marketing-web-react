@@ -3,7 +3,6 @@ import './App.css'
 import Home from './views/Home'
 import React from 'react'
 import DefaultLayout from './style/DefaultLayout'
-import styled from 'styled-components'
 
 function App() {
   return (
