@@ -6,7 +6,6 @@ body {
   font-family: Pretendard, sans-serif;
   margin: 0;
   display: flex;
-  min-width: 320px;
   min-height: 100vh;
 }
 
@@ -26,7 +25,6 @@ a:hover {
   cursor: pointer;
 }
 
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -38,9 +36,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -51,9 +51,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }

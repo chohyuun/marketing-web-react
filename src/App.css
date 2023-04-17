@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  display: flex;
   text-align: center;
   min-height: calc(100vh - 90px);
 }
@@ -10,9 +10,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -33,13 +35,13 @@
 }
 
 .container-fluid {
-  padding: 1em;
+  margin: 0 1em 1em;
   display: flex;
   flex-direction: column;
 }
 
 .col {
-  margin: 1em;
+  padding: 1.5em 1em;
   display: flex;
 }
 

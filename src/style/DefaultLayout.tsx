@@ -4,56 +4,67 @@ import { Outlet, useNavigate } from 'react-router-dom'
 const DefaultLayout = () => {
   const navigate = useNavigate()
   return (
-    <>
-      <Layout>
-        <Header>
+    <Layout>
+      <Header>
+        <div>
           <a
             onClick={() => {
               navigate('/home')
             }}
           >
-            우리집 고양이 귀여워
+            PET Equipment
           </a>
-        </Header>
-        <Content>
-          <Outlet />
-        </Content>
-      </Layout>
-    </>
+        </div>
+        <div>소중한 반려동물을 위한 동물 상품</div>
+      </Header>
+      <Content>
+        <Outlet />
+      </Content>
+    </Layout>
   )
 }
 
 export default DefaultLayout
 
-const Layout = styled.div`
+const Layout = styled.section`
+  display: flex;
+  position: relative;
   width: 100vw;
-  //min-height: 100vh;
-  color: #000000;
-  background: #ffffff;
+  height: calc(100vh - 90px);
 `
 
 const Header = styled.header`
-  z-index: 999;
   display: flex;
-  width: 100%;
-  height: 90px;
+  position: fixed;
+  flex-direction: column;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #213547;
+  width: 100%;
+  z-index: 999;
+  height: 90px;
+  background-color: #3f3f3f;
   color: #ffffff;
-  font-size: 40px;
   justify-content: center;
   align-items: center;
 
-  a:hover {
-    color: #ffffff;
+  a {
+    font-size: 32px;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
+  div {
+    margin-top: 5px;
+    display: flex;
   }
 `
 
-const Content = styled.body`
+const Content = styled.div`
   position: relative;
-  height: calc(100vh - 90px);
-  width: 100vw;
   flex-direction: column;
+  padding-top: 90px;
+  width: 100%;
 `
