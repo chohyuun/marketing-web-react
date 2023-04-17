@@ -11,6 +11,7 @@ module.exports = {
     'prettier',
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
+    'eslint-config-typescript',
     'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
@@ -24,11 +25,12 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     '@typescript-eslint/semi': 'off',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/space-before-function-paren': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   settings: {
     'import/resolver': {
