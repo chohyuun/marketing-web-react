@@ -15,7 +15,7 @@ const DefaultLayout = () => {
             PET Equipment
           </a>
         </div>
-        <div>소중한 반려동물을 위한 동물 상품</div>
+        <div>소중한 반려동물을 위한 동물 용품</div>
       </Header>
       <Content>
         <Outlet />
