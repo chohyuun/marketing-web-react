@@ -31,6 +31,7 @@ const Layout = styled.section`
   position: relative;
   width: 100vw;
   height: calc(100vh - 90px);
+  line-height: 1.3em;
 `
 
 const Header = styled.header`
