@@ -1,6 +1,10 @@
 import { CatBox, CatToy2, CatBowl, CatTower, CatToy1 } from '../assets'
 
-type ProductDataType = {
+/**
+ * url: image 링크
+ * title: 상품 이름
+ */
+export type ProductDataType = {
   url: string
   title: string
 }
