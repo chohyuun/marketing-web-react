@@ -34,15 +34,8 @@
   }
 }
 
-.container-fluid {
-  margin: 0 1em 1em;
-  display: flex;
-  flex-direction: column;
-}
-
-.col {
-  padding: 1.5em 1em;
-  display: flex;
+.row {
+  padding: 1em;
 }
 
 .card {
