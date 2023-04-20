@@ -11,6 +11,9 @@ const RootRoutes = () => {
         <Route path="*" element={<DefaultLayout />}>
           <Route index element={<Navigate to="/home" />} />
           <Route path="home" element={<Home />} />
+          <Route path="product">
+            <Route path=":titleId" element={<ProductDetail />} />
+          </Route>
         </Route>
       </Routes>
     </Router>
