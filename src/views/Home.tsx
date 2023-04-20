@@ -1,50 +1,78 @@
 import styled from 'styled-components'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Button, Col, Container, Row } from 'react-bootstrap'
 import BooriCat from '../assets/image/cat3.jpeg'
-import { createContext, useState } from 'react'
-import { productData } from '../type/productData'
+import { useMemo, useState } from 'react'
+import { productData, ProductDataType } from '../type/productData'
 import ProductBox from './ProductBox'
+import { useUpdateEffect } from 'react-use'
+import { useNavigate } from 'react-router-dom'
 
-export type ContextData = {
-  url: string
-  title: string
+const initialProductData: ProductDataType = {
+  url: '',
+  title: '',
+  price: 0,
+  discount: undefined,
 }
-export const ProductContext = createContext<ContextData | undefined>(undefined)
 
 const Home = () => {
-  const [clickData, setClickData] = useState<ContextData>()
+  const [clickData, setClickData] = useState<ProductDataType>(initialProductData)
+  const navigate = useNavigate()
 
   const onClickHandler = (e: any) => {
-    setClickData({
-      url: e.target.src,
-      title: e.target.title,
+    setClickData((prevState) => {
+      return {
+        ...prevState,
+        url: e.target.src,
+        title: e.target.title,
+        price: e.target.price,
+        discount: e.target.discount ?? undefined,
+      }
     })
   }
 
+  const clickNotUndefined = useMemo(() => {
+    return clickData.url !== '' && clickData.title !== ''
+  }, [clickData])
+
+  useUpdateEffect(() => {
+    if (clickNotUndefined) {
+      navigate(`/product/${clickData?.title}`, { state: { value: clickData } })
+    }
+  }, [clickData])
+
   // todo home image changes to swipe image
+  // todo SwipeImage change
   return (
     <>
-      <ProductContext.Provider value={clickData}>
-        <Container fluid>
-          <HomeRow>
-            <HomeCol>
-              <SwipeImage title="정말싸다 뽀리 사진!!" src={BooriCat} onClick={onClickHandler} />
-            </HomeCol>
-          </HomeRow>
-          <HomeRow>
-            <HomeCol>
-              <div className="description">이달의 아이템</div>
-            </HomeCol>
-          </HomeRow>
-          <HomeRow>
-            <HomeCol sm={6}>
+      <Container fluid>
+        <Row xs={1}>
+          <Col>
+            <HomeRow>
+              <HomeCol>
+                <SwipeImage title="정말싸다 뽀리 사진!!" src={BooriCat} onClick={onClickHandler} />
+              </HomeCol>
+            </HomeRow>
+            <HomeRow>
+              <HomeCol>
+                <div className="description">
+                  이달의 아이템
+                  <p>돈 많이 벌어서 고양이 까까 사주고 싶다.</p>
+                </div>
+              </HomeCol>
+            </HomeRow>
+            <Row>
               {productData.map((value, index) => {
                 return <ProductBox key={index} value={value} setClickData={setClickData} />
               })}
-            </HomeCol>
-          </HomeRow>
-        </Container>
-      </ProductContext.Provider>
+            </Row>
+            <HomeRow>
+              <HomeCol>
+                <Button variant="outline-info">Contact</Button>
+              </HomeCol>
+            </HomeRow>
+          </Col>
+        </Row>
+      </Container>
     </>
   )
 }
@@ -56,6 +84,11 @@ const HomeCol = styled(Col)`
 
   & .description {
     margin: 10px 0;
+
+    p {
+      color: #888888;
+      font-size: 12px;
+    }
   }
 `
 
@@ -64,10 +97,6 @@ const HomeRow = styled(Row)`
 
   &:last-child {
     border: unset;
-  }
-
-  & .col-sm-6 {
-    margin: 1.5em 1em;
   }
 `
 

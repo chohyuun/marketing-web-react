@@ -1,48 +1,54 @@
 import styled, { css } from 'styled-components'
 import { ProductDataType } from '../type/productData'
 import { Dispatch, SetStateAction } from 'react'
-import { ContextData } from './Home'
 import { NumberFormatter } from '../utils/NumberFormatter'
+import { Col, Row } from 'react-bootstrap'
 
 interface ProductImageProps {
   value: ProductDataType
-  setClickData: Dispatch<SetStateAction<ContextData | undefined>>
+  setClickData: Dispatch<SetStateAction<ProductDataType>>
 }
 
 const ProductBox = ({ value, setClickData }: ProductImageProps) => {
-  return (
-    <ImageArea
-      discount={!!value.discount}
-      onClick={() =>
-        setClickData({
-          url: value.url,
-          title: value.title,
-        })
+  const onClickHandler = () => {
+    setClickData((prevState) => {
+      return {
+        ...prevState,
+        url: value.url,
+        title: value.title,
+        price: value.price,
+        discount: value.discount ?? undefined,
       }
-    >
-      <ContentImage title={value.title} src={value.url} />
-      <div>
-        <p className="product-title">{value.title}</p>
-      </div>
-      <div className="product-price">
-        가격: <p className="before-discount">{NumberFormatter(value.price)}</p>
-        <p>
-          {value.discount
-            ? NumberFormatter(value.price * (1 - value.discount / 100))
-            : NumberFormatter(value.price)}
-        </p>
-      </div>
-    </ImageArea>
+    })
+  }
+
+  return (
+    <Col lg={3} md={4} xs={12}>
+      <ImageArea discount={!!value.discount} onClick={onClickHandler}>
+        <ContentImage title={value.title} src={value.url} />
+        <div>
+          <p className="product-title">{value.title}</p>
+        </div>
+        <div className="product-price">
+          가격: <p className="before-discount">{NumberFormatter(value.price) + ' 원'}</p>
+          <p>
+            {value.discount
+              ? NumberFormatter(value.price * (1 - value.discount / 100)) + ' 원'
+              : NumberFormatter(value.price) + ' 원'}
+          </p>
+        </div>
+      </ImageArea>
+    </Col>
   )
 }
 
 const ImageArea = styled.div<{ discount: boolean }>`
   display: inline-block;
   justify-content: flex-end;
-  margin: 10px 10px 20px;
+  margin: 0 10px 30px;
   position: relative;
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 200px;
+  max-height: 200px;
   font-weight: 600;
 
   div {
@@ -50,7 +56,7 @@ const ImageArea = styled.div<{ discount: boolean }>`
     align-items: end;
     text-align: start;
     position: absolute;
-    width: 250px;
+    width: 200px;
     height: 50px;
     padding-top: 200px;
     top: 0;
@@ -61,14 +67,14 @@ const ImageArea = styled.div<{ discount: boolean }>`
       width: 100%;
       font-size: 14px;
       padding: 5px 10px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
     }
   }
 
   & .product-price {
     display: flex;
     justify-content: end;
-    height: 250px;
+    height: 200px;
     padding: 0;
     top: 20px;
     font-size: 12px;
@@ -93,8 +99,8 @@ const ImageArea = styled.div<{ discount: boolean }>`
 `
 
 const ContentImage = styled.img`
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 200px;
+  max-height: 200px;
   margin-bottom: 5px;
 `
 export default ProductBox
