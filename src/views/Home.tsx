@@ -47,8 +47,8 @@ const Home = () => {
       <Container fluid>
         <Row xs={1}>
           <Col>
-            <HomeRow>
-              <HomeCol>
+            <HomeRow className="justify-content-center">
+              <HomeCol xs={12}>
                 <SwipeImage title="정말싸다 뽀리 사진!!" src={BooriCat} onClick={onClickHandler} />
               </HomeCol>
             </HomeRow>
@@ -65,11 +65,6 @@ const Home = () => {
                 return <ProductBox key={index} value={value} setClickData={setClickData} />
               })}
             </Row>
-            <HomeRow>
-              <HomeCol>
-                <Button variant="outline-info">Contact</Button>
-              </HomeCol>
-            </HomeRow>
           </Col>
         </Row>
       </Container>
@@ -101,9 +96,7 @@ const HomeRow = styled(Row)`
 `
 
 const SwipeImage = styled.img`
-  width: 500px;
-  height: 450px;
+  width: 100%;
+  height: 300px;
   object-fit: cover;
-  border-radius: 5px;
-  object-position: 25% 75%;
 `

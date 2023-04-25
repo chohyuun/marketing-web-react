@@ -19,4 +19,9 @@
   --font-regular: Pretendard, sans-serif;
   --font-medium: PretendardBold, sans-serif;
   --font-bold: PretendardExtraBold, sans-serif;
+
+  /* bootstrap style override */
+  button {
+    border-radius: unset;
+  }
 }

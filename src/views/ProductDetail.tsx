@@ -17,7 +17,7 @@ const ProductDetail = () => {
     <>
       <Container fluid>
         <Row xs={1} className="justify-content-center">
-          <Col xs={6}>
+          <Col md={6} xs={12}>
             <Row>
               <Col>
                 <ProductImage src={productUrl} />
@@ -31,23 +31,18 @@ const ProductDetail = () => {
                     가격: <p className="price">{NumberFormatter(productPrice)} 원</p>
                     <p className="discount">
                       {!!productDiscount &&
-                        NumberFormatter(productPrice * (1 - productDiscount / 100))}{' '}
-                      원
+                        NumberFormatter(productPrice * (1 - productDiscount / 100)) + ' 원'}
                     </p>
                   </div>
                 </ProductInfo>
               </Col>
             </Row>
             <ButtonRow>
-              <Col>
-                <Button variant="outline-info" size="sm">
-                  상품 구매하기
-                </Button>
+              <Col sm={9} xs={12}>
+                <Button variant="outline-info">상품 구매하기</Button>
               </Col>
-              <Col>
-                <Button variant="outline-secondary" size="sm">
-                  장바구니 추가
-                </Button>
+              <Col sm={3} xs={12}>
+                <Button variant="outline-secondary">장바구니 추가</Button>
               </Col>
             </ButtonRow>
           </Col>
@@ -84,14 +79,17 @@ const ProductInfo = styled.div<{ isDiscount: boolean }>`
     ${({ isDiscount }) =>
       isDiscount &&
       css`
-        font-weight: 500;
         color: #313131;
       `}}
   }
 `
 
 const ButtonRow = styled(Row)`
+  display: flex;
   justify-content: end;
+  button {
+    width: 100%;
+  }
 `
 
 export default ProductDetail
