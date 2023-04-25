@@ -23,7 +23,7 @@ const ProductBox = ({ value, setClickData }: ProductImageProps) => {
   }
 
   return (
-    <Col lg={3} md={4} xs={12}>
+    <Col lg={3} md={4}>
       <ImageArea discount={!!value.discount} onClick={onClickHandler}>
         <ContentImage title={value.title} src={value.url} />
         <div>
@@ -45,10 +45,10 @@ const ProductBox = ({ value, setClickData }: ProductImageProps) => {
 const ImageArea = styled.div<{ discount: boolean }>`
   display: inline-block;
   justify-content: flex-end;
-  margin: 0 10px 30px;
+  margin-bottom: 30px;
   position: relative;
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 100%;
+  //max-height: 200px;
   font-weight: 600;
 
   div {
@@ -56,9 +56,9 @@ const ImageArea = styled.div<{ discount: boolean }>`
     align-items: end;
     text-align: start;
     position: absolute;
-    width: 200px;
+    width: 100%;
     height: 50px;
-    padding-top: 200px;
+    padding-top: 100%;
     top: 0;
     background: unset;
     color: #ffffff;
@@ -74,7 +74,7 @@ const ImageArea = styled.div<{ discount: boolean }>`
   & .product-price {
     display: flex;
     justify-content: end;
-    height: 200px;
+    height: 100%;
     padding: 0;
     top: 20px;
     font-size: 12px;
@@ -99,8 +99,7 @@ const ImageArea = styled.div<{ discount: boolean }>`
 `
 
 const ContentImage = styled.img`
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 100%;
   margin-bottom: 5px;
 `
 export default ProductBox
