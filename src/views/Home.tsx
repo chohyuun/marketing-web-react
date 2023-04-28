@@ -47,24 +47,24 @@ const Home = () => {
       <Container fluid>
         <Row xs={1}>
           <Col>
-            <HomeRow className="justify-content-center">
+            <HomeRow>
               <HomeCol xs={12}>
                 <SwipeImage title="정말싸다 뽀리 사진!!" src={BooriCat} onClick={onClickHandler} />
               </HomeCol>
             </HomeRow>
             <HomeRow>
               <HomeCol>
-                <div className="description">
+                <div className="subtitle">
                   이달의 아이템
                   <p>돈 많이 벌어서 고양이 까까 사주고 싶다.</p>
                 </div>
               </HomeCol>
             </HomeRow>
-            <Row>
+            <HomeRow>
               {productData.map((value, index) => {
                 return <ProductBox key={index} value={value} setClickData={setClickData} />
               })}
-            </Row>
+            </HomeRow>
           </Col>
         </Row>
       </Container>
@@ -77,8 +77,10 @@ export default Home
 const HomeCol = styled(Col)`
   justify-content: center;
 
-  & .description {
-    margin: 10px 0;
+  & .subtitle {
+    padding: 20px;
+    border-bottom: 1px #888888 solid;
+    border-top: 1px #888888 solid;
 
     p {
       color: #888888;
@@ -88,7 +90,7 @@ const HomeCol = styled(Col)`
 `
 
 const HomeRow = styled(Row)`
-  border-bottom: 1px #888888 solid;
+  padding: 10px;
 
   &:last-child {
     border: unset;
@@ -99,4 +101,5 @@ const SwipeImage = styled.img`
   width: 100%;
   height: 300px;
   object-fit: cover;
+  vertical-align: middle;
 `
