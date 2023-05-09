@@ -7,4 +7,11 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   envPrefix: 'REACT_APP_',
   envDir: './environment',
+  css: {
+    preprocessorOptions: {
+      sass: {
+        additionalData: '@import "./src/style/global.ts";',
+      },
+    },
+  },
 })
