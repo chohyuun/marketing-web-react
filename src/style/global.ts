@@ -61,3 +61,22 @@ button:focus-visible {
   }
 }
 `
+
+// Device Size 정의 참고
+// https://react-bootstrap.github.io/layout/breakpoints/
+export const GlobalDeviceSize = {
+  xs: 0, // max
+  sm: 576, // max
+  md: 768, // max
+  lg: 992, // max
+  xl: 1200, // min
+}
+
+// Divice Size BreakPoint
+export const BreakPoint = {
+  xs: `max-width: ${GlobalDeviceSize.sm - 1}px`, // 0 ~ 575px - Mobile
+  sm: `max-width: ${GlobalDeviceSize.md - 1}px`, // 0 ~ 767px - Large Mobile
+  md: `max-width: ${GlobalDeviceSize.lg - 1}px`, // 0 ~ 991px - Tablet
+  lg: `max-width: ${GlobalDeviceSize.xl - 1}px`, // 0 ~ 1199px - Laptop
+  xl: `min-width: ${GlobalDeviceSize.xl}px`, // 1200px ~ - Desktop
+}
